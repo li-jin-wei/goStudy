@@ -23,4 +23,5 @@ func main() {
 		fmt.Printf("%d班的总分为:%v,平均分为:%v\n", i+1, sum, sum/float64(len(score[i])))
 	}
 	fmt.Printf("所有班级的总分为:%v，所有班的平均分为:%v\n", totalsum, totalsum/15)
+	fmt.Println(score)
 }
