@@ -1,6 +1,6 @@
 package main
 
-func Iota_Demo()(i any...){
+func Iota_Demo() []int {
 	const (
 		a = iota
 		b = iota
