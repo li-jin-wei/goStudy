@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	var a int = 60 // 00111100
-	var b int = 13 // 00001101
+	var a = 60 // 00111100
+	var b = 13 // 00001101
 	//按位与运算，都是1则为1，否则为0
 	fmt.Println(a & b)
 	//按位或运算，都是0则为0
