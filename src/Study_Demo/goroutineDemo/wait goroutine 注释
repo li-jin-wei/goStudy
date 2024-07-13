@@ -1,0 +1,8 @@
+WaitGroup
+
+WaitGroup等待一组goroutines完成。
+主goroutine调用Add来设置等待的goroutine。
+然后每个goroutines完成后运行并调用Done。
+同时Wait可用于阻塞，直到所有goroutines都完成。
+首次使用后不得复制WaitGroup。
+在Go内存模型的术语中，对Done的调用在它取消阻止的任何Wait调用返回之前“同步”。
