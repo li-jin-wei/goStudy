@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	"log"
+	"net/http"
 	"strconv"
 	"time"
 )
@@ -40,6 +41,10 @@ func main() {
 	}
 
 	r := gin.Default()
+
+	r.GET("/", func(ctx *gin.Context) {
+		ctx.String(http.StatusOK, "Gin+Gorm测试crud接口!")
+	})
 
 	r.POST("/user/add", func(ctx *gin.Context) {
 		var data List
@@ -123,6 +128,25 @@ func main() {
 		}
 
 	})
+
+	//r.GET("/User/list/:id", func(ctx *gin.Context) {
+	//	id := ctx.Param("id")
+	//	var dataList []List
+	//	db.Select("id").Where("id =?", id).Find(&dataList)
+	//	if dataList.ID == 0 {
+	//		ctx.JSON(200, gin.H{
+	//			"msg":  "用户id没有找到",
+	//			"code": 400,
+	//		})
+	//	} else {
+	//		ctx.JSON(200, gin.H{
+	//			"msg":  "查询成功",
+	//			"code": 200,
+	//			"data": dataList,
+	//		})
+	//	}
+	//
+	//})
 
 	r.GET("/user/list", func(ctx *gin.Context) {
 		var dataList []List
