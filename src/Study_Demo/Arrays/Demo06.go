@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// 多维数组的应用
 func main() {
 	var score [3][5]float64
 

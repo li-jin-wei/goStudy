@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+//多维数组的遍历
+
 func main() {
 	//nums := [3]int{1, 2, 3}
 	//num := new([10]int)
