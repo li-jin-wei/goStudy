@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 func main() {
+	//指针函数
+
 	ptr := f5()
 
 	fmt.Println("ptr:", ptr)
@@ -18,4 +20,6 @@ func main() {
 func f5() *[4]int {
 	arr := [4]int{1, 2, 3, 4}
 	return &arr
+
+	//	返回一个指针类型
 }
