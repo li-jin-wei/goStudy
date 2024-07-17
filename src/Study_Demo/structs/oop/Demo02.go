@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// 继承
+// 继承01
 type Ouyangcrazy struct {
 	Name string
 	Age  int
@@ -10,6 +10,8 @@ type Ouyangcrazy struct {
 }
 
 type YangGuo struct {
+
+	//Ouyangcrazy 匿名字段，实现了继承
 	Ouyangcrazy
 	Address string
 }

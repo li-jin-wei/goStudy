@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-// 字典结构
+// Dictionary 字典结构
 type Dictionary struct {
-	data map[string]interface{}
+	data map[string]interface{} //空接口类型的map
 }
 
 func (d *Dictionary) GetData(key string) interface{} {
