@@ -8,9 +8,10 @@ import (
 //time包
 
 func main() {
-	timeDemo1()
-	timeDemo2()
-	timeDemo3()
+	//timeDemo1()
+	//timeDemo2()
+	//timeDemo3()
+	timeDemo4()
 }
 func timeDemo1() {
 	//获取当前时间now
@@ -46,6 +47,25 @@ func timeDemo3() {
 
 	timeStr := "2024-07-18 16:51:30"
 	timOBJ, _ := time.ParseInLocation("2006-01-02 15:04:05", timeStr, loc)
-	fmt.Printf("%T\n", timOBJ)
+	//fmt.Printf("%T\n", timOBJ)
 	fmt.Println(timOBJ)
+}
+
+// 时间戳
+func timeDemo4() {
+	now := time.Now()
+	timestamp1 := now.Unix()     //时间戳
+	timestamp2 := now.UnixNano() //纳秒的时间数
+
+	fmt.Println(timestamp1, timestamp2)
+
+	//通过unix抓换time对象
+	timeObj := time.Unix(timestamp1, 0) //返回time对象
+	year := timeObj.Year()
+	month := timeObj.Month()
+	day := timeObj.Day()
+	hour := timeObj.Hour()
+	minute := timeObj.Minute()
+	second := timeObj.Second()
+	fmt.Printf("%d-%02d-%02d %02d:%02d:%02d\n", year, month, day, hour, minute, second)
 }
