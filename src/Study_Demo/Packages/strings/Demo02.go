@@ -59,7 +59,7 @@ func timeDemo4() {
 
 	fmt.Println(timestamp1, timestamp2)
 
-	//通过unix抓换time对象
+	//通过unix转换time对象
 	timeObj := time.Unix(timestamp1, 0) //返回time对象
 	year := timeObj.Year()
 	month := timeObj.Month()
