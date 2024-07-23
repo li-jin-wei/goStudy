@@ -6,20 +6,20 @@ import (
 )
 
 type Prescripts struct {
-	Name     string
-	Unit     string
-	Additive *Prescripts
+	Name     string      `json:"name,omitempty"`
+	Unit     string      `json:"unit"`
+	Additive *Prescripts `json:"additive,omitempty"`
 }
 
 func main() {
 	p := &Prescripts{}
-	p.Name = "鹤顶红"
-	p.Unit = "1.2kg"
+	p.Name = "测试"
+	p.Unit = "1.2"
 	p.Additive = &Prescripts{
-		Name: "砒霜",
-		Unit: "0.5kg",
+		Name: "Test",
+		Unit: "0.5",
 	}
-	//结构体专json字符串
+	//结构体转json字符串
 	marshal, err := json.Marshal(p)
 	if err != nil {
 		return
