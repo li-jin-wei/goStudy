@@ -3,12 +3,14 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	"log"
+	"time"
+
+	//"go_project/src/Study_Demo/Packages/init"
+	"gorm.io/gorm"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 func main() {
@@ -26,7 +28,7 @@ func main() {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
-
+	//init.init()
 	type List struct {
 		gorm.Model        //主键
 		Name       string `gorm:"type:varchar(20); not null" json:"name" binding:"required"`
