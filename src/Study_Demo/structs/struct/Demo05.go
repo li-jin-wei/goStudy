@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type User2 struct {
+type UserDemo struct {
 	name string
 	age  int
 	sex  string
@@ -10,7 +10,7 @@ type User2 struct {
 
 func main() {
 	//	结构体指针
-	user1 := User2{"dd", 18, "男"}
+	user1 := UserDemo{"dd", 18, "男"}
 	fmt.Println(user1)
 	fmt.Printf("%T,%p\n", user1, &user1)
 
@@ -35,7 +35,7 @@ func main() {
 
 	fmt.Println("++++++++++++++++++++++++++++++++++++++++++")
 	//内置函数 new 创建对象。  new 关键字创建的对象，都返回指针，而不是结构体对象。
-	user3 := new(User2)
+	user3 := new(UserDemo)
 	fmt.Println(user3)
 	fmt.Println(*user3)
 
