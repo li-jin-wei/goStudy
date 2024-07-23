@@ -34,5 +34,4 @@ func init() {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
-
 }
