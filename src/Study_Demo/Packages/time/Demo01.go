@@ -8,9 +8,9 @@ import (
 //time包
 
 func main() {
-	//timeDemo1()
-	//timeDemo2()
-	//timeDemo3()
+	timeDemo1()
+	timeDemo2()
+	timeDemo3()
 	timeDemo4()
 }
 func timeDemo1() {
