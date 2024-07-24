@@ -20,13 +20,25 @@ type DirectoryOperate interface {
 	//RemoveAllDirectory 删除层级目录
 	RemoveAllDirectory(path string)
 }
+
+type fileOperate interface {
+	FileCreate(path string)
+	FileDelete(path string)
+}
+
 type Operate struct {
 	//单个文件路径
 	DirectoryPath string
 	//层级文件删除第一层文件路径
 	RemoveAllDirectoryPath string
 	//创建层级文件详细目录
-	MakeAllDirectoryPath string
+	CreateAllDirectoryPath string
+
+	//创建文件路径
+	CreateFilePath string
+
+	//删除文件路径
+	DeleteFilePath string
 }
 
 func (operste Operate) MakeDirectory(DirectoryPath string) {
@@ -39,9 +51,9 @@ func (operste Operate) MakeDirectory(DirectoryPath string) {
 	log.Println("文件创建完毕")
 }
 
-func (operste Operate) MakeAllDirectory(MakeAllDirectoryPath string) {
+func (operste Operate) MakeAllDirectory(CreateAllDirectoryPath string) {
 	//MkdirAll()层级文件创建
-	err := os.MkdirAll(MakeAllDirectoryPath, os.ModePerm)
+	err := os.MkdirAll(CreateAllDirectoryPath, os.ModePerm)
 	if err != nil {
 		log.Println("创建失败，目录已存在")
 		return
@@ -72,9 +84,35 @@ func (Operate Operate) RemoveAllDirectory(RemoveAllDirectoryPath string) {
 	log.Println("层级文件删除成功")
 }
 
+func (Operate Operate) FileCreate(CreateFilePath string) {
+	file, err := os.Create(CreateFilePath)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println("文件创建成功", file.Name())
+	}
+}
+
+func (Operate Operate) FileDelete(DeleteFilePath string) {
+	err := os.Remove(DeleteFilePath)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println("文件删除成功")
+	}
+
+}
+
 func main() {
-	operate := Operate{DirectoryPath: "/Users/dayu/Desktop/Demo_Test", RemoveAllDirectoryPath: "/Users/dayu/Desktop/Demo", MakeAllDirectoryPath: "/Users/dayu/Desktop/Demo/1/2/3/4"}
-	//实例化
+
+	//实例化Operate对象
+	operate := Operate{
+		DirectoryPath:          "/Users/dayu/Desktop/Demo_Test",
+		RemoveAllDirectoryPath: "/Users/dayu/Desktop/Demo",
+		CreateAllDirectoryPath: "/Users/dayu/Desktop/Demo/1/2/3/4",
+		CreateFilePath:         "/Users/dayu/Desktop/test.txt",
+		DeleteFilePath:         "/Users/dayu/Desktop/test.txt",
+	}
 
 	operate.RemoveDirectory(operate.DirectoryPath)
 	operate.RemoveAllDirectory(operate.RemoveAllDirectoryPath)
@@ -83,5 +121,9 @@ func main() {
 
 	operate.MakeDirectory(operate.DirectoryPath)
 	operate.MakeAllDirectory(operate.MakeAllDirectoryPath)
+
+	operate.FileCreate(operate.CreateFilePath)
+
+	operate.FileDelete(operate.DeleteFilePath)
 
 }
