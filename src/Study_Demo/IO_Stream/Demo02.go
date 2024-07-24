@@ -78,9 +78,9 @@ func main() {
 
 	operate.RemoveDirectory(operate.DirectoryPath)
 	operate.RemoveAllDirectory(operate.RemoveAllDirectoryPath)
-
 	//休息三秒查看执行结果
-	time.Sleep(3 * time.Second)
+	time.Sleep(5 * time.Second)
+
 	operate.MakeDirectory(operate.DirectoryPath)
 	operate.MakeAllDirectory(operate.MakeAllDirectoryPath)
 
