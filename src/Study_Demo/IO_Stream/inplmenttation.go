@@ -3,28 +3,9 @@ package main
 import (
 	"log"
 	"os"
-	"time"
 )
 
-type DirectoryOperate interface {
-
-	// MakeDirectory 创建单个目录
-	MakeDirectory(path string)
-
-	//MakeAllDirectory 创建层级目录
-	MakeAllDirectory(path string)
-
-	//RemoveDirectory 删除单个目录
-	RemoveDirectory(path string)
-
-	//RemoveAllDirectory 删除层级目录
-	RemoveAllDirectory(path string)
-}
-
-type fileOperate interface {
-	FileCreate(path string)
-	FileDelete(path string)
-}
+//定义结构体实现接口方法
 
 type Operate struct {
 	//单个文件路径
@@ -100,30 +81,5 @@ func (Operate Operate) FileDelete(DeleteFilePath string) {
 	} else {
 		log.Println("文件删除成功")
 	}
-
-}
-
-func main() {
-
-	//实例化Operate对象
-	operate := Operate{
-		DirectoryPath:          "/Users/dayu/Desktop/Demo_Test",
-		RemoveAllDirectoryPath: "/Users/dayu/Desktop/Demo",
-		CreateAllDirectoryPath: "/Users/dayu/Desktop/Demo/1/2/3/4",
-		CreateFilePath:         "/Users/dayu/Desktop/test.txt",
-		DeleteFilePath:         "/Users/dayu/Desktop/test.txt",
-	}
-
-	operate.RemoveDirectory(operate.DirectoryPath)
-	operate.RemoveAllDirectory(operate.RemoveAllDirectoryPath)
-	//休息三秒查看执行结果
-	time.Sleep(5 * time.Second)
-
-	operate.MakeDirectory(operate.DirectoryPath)
-	operate.MakeAllDirectory(operate.MakeAllDirectoryPath)
-
-	operate.FileCreate(operate.CreateFilePath)
-
-	operate.FileDelete(operate.DeleteFilePath)
 
 }
