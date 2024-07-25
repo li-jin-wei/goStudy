@@ -1,6 +1,6 @@
-package main
+package Directory
 
-//目录文件操作接口
+//目录操作接口
 
 // DirectoryOperate 目录操作接口
 type DirectoryOperate interface {

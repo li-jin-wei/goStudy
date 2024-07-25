@@ -1,11 +1,14 @@
 package main
 
-import "time"
+import (
+	"Study_Demo/IO_Stream/Directory"
+	"time"
+)
 
 func main() {
 
 	//实例化Operate对象
-	operate := Operate{
+	operate := Directory.Operate{
 		DirectoryPath:          "/Users/dayu/Desktop/Demo_Test",
 		RemoveAllDirectoryPath: "/Users/dayu/Desktop/Demo",
 		CreateAllDirectoryPath: "/Users/dayu/Desktop/Demo/1/2/3/4",
