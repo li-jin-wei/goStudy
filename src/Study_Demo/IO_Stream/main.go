@@ -2,7 +2,6 @@ package main
 
 import (
 	"Study_Demo/IO_Stream/Directory"
-	"time"
 )
 
 func main() {
@@ -16,13 +15,13 @@ func main() {
 		DeleteFilePath:         "/Users/dayu/Desktop/test.txt",
 	}
 
-	operate.RemoveDirectory(operate.DirectoryPath)
-	operate.RemoveAllDirectory(operate.RemoveAllDirectoryPath)
-	//休息三秒查看执行结果
-	time.Sleep(5 * time.Second)
-
-	operate.MakeDirectory(operate.DirectoryPath)
-	operate.MakeAllDirectory(operate.CreateAllDirectoryPath)
+	//operate.RemoveDirectory(operate.DirectoryPath)
+	//operate.RemoveAllDirectory(operate.RemoveAllDirectoryPath)
+	////休息三秒查看执行结果
+	//time.Sleep(5 * time.Second)
+	//
+	//operate.MakeDirectory(operate.DirectoryPath)
+	//operate.MakeAllDirectory(operate.CreateAllDirectoryPath)
 
 	operate.FileCreate(operate.CreateFilePath)
 
