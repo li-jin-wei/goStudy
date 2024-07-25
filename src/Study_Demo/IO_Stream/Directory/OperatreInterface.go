@@ -1,4 +1,4 @@
-package Directory
+package main
 
 //目录操作接口
 

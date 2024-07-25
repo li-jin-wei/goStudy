@@ -1,4 +1,4 @@
-package Directory
+package main
 
 import (
 	"log"
