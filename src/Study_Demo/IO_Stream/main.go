@@ -23,6 +23,6 @@ func main() {
 
 	operate.FileCreate(operate.CreateFilePath)
 
-	operate.FileDelete(operate.DeleteFilePath)
+	//operate.FileDelete(operate.DeleteFilePath)
 
 }
