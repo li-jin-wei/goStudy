@@ -1,8 +1,6 @@
 package main
 
-import (
-	"Study_Demo/IO_Stream/Directory"
-)
+import "Study_Demo/IO_Stream/Directory"
 
 func main() {
 
