@@ -1,6 +1,8 @@
 module go-project
 
-go 1.20
+go 1.21.4
+
+toolchain go1.22.2
 
 //go 1.22.2
 
