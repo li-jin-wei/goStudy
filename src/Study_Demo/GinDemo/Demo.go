@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	dsn := "root:Ljinw1997.@tcp(121.40.224.156:3306)/curd_list?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:123456@tcp(localhost:3306)/curd_list?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
