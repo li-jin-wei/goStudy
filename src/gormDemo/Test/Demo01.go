@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func initDB() {
-	dsn := "root:123456@tcp(127.0.0.1:306)/Test?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Ljinw1997@@tcp(iljw.top:65501)/Test?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("数据库连接失败", err)
@@ -20,24 +20,18 @@ func initDB() {
 
 type User struct {
 	gorm.Model
-	ID      uint   `gorm:"autoIncrement,unique" json:"ID" binding:"required"`
-	Name    string `gorm:"unique" json:"name"  binding:"required"`
-	Age     uint   `json:"age" binding:"required"`
-	Sex     string `json:"sex" binding:"required"`
-	Address string `json:"address"  binding:"required"`
-	Email   string `json:"email" binding:"required"`
+	ID      uint   `json:"ID"     gorm:"autoIncrement,unique"   binding:"required"`
+	Name    string `json:"name"   gorm:"unique"                 binding:"required"`
+	Age     uint   `json:"age"                                  binding:"required"`
+	Sex     string `json:"sex"                                  binding:"required"`
+	Address string `json:"address"                              binding:"required"`
+	Email   string `json:"email"                                binding:"required"`
 }
 
 func main() {
 	initDB()
 	DB.AutoMigrate(User{})
 	r := gin.Default()
-	r.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(200, gin.H{
-			"msg":  "hello",
-			"data": "world",
-		})
-	})
 
 	r.POST("/user/add", func(ctx *gin.Context) {
 		var user User

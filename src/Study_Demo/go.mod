@@ -1,8 +1,6 @@
 module Study_Demo
 
-go 1.21.4
-
-toolchain go1.22.2
+go 1.20
 
 require (
 	github.com/gin-gonic/gin v1.10.0
