@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	dsn := "root:123456@tcp(localhost:3306)/curd_list?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:123456.@tcp(localhost:3306)/curd_list?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
@@ -43,13 +43,12 @@ func main() {
 	}
 
 	r := gin.Default()
-
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.String(http.StatusOK, "Gin+Gorm测试crud接口!")
 	})
 
 	r.POST("/user/add", func(ctx *gin.Context) {
-		var data List
+		var data []List
 
 		err := ctx.ShouldBindJSON(&data)
 		if err != nil {
@@ -70,6 +69,8 @@ func main() {
 	r.DELETE("/user/delete/:id", func(ctx *gin.Context) {
 		var data []List
 		id := ctx.Param("id")
+
+		//Find(&data) 执行查询并填充结果到提供的切片中
 		db.Where("id =?", id).Find(&data)
 		if len(data) == 0 {
 			ctx.JSON(200, gin.H{
@@ -134,7 +135,9 @@ func main() {
 	r.GET("/user/list", func(ctx *gin.Context) {
 		var dataList []List
 
+		//pageSize 每页显示多少条数据
 		pageSize, _ := strconv.Atoi(ctx.Query("pageSize"))
+		//pageNum 当前第几页
 		pageNum, _ := strconv.Atoi(ctx.Query("pageNum"))
 
 		if pageSize == 0 {
@@ -143,13 +146,23 @@ func main() {
 		if pageNum == 0 {
 			pageNum = -1
 		}
+
+		//offsetVal 偏移量，跳过前面多少条数据，以获取后面多少条数据
 		offsetVal := (pageNum - 1) * pageSize
+
+		//如果pageSize和pageNum都为-1，则查询所有数据
 		if pageNum == -1 && pageSize == -1 {
 			offsetVal = -1
 		}
 
+		//total 用于查询总数
 		var total int64
-		db.Model(dataList).Count(&total).Limit(pageSize).Offset(offsetVal).Find(&dataList)
+
+		//查询总数
+		db.Model(dataList).Count(&total)
+
+		//分页查询
+		db.Model(dataList).Limit(pageSize).Offset(offsetVal).Find(&dataList)
 
 		if len(dataList) == 0 {
 			ctx.JSON(200, gin.H{
