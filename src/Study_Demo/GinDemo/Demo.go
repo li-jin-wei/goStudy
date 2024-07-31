@@ -52,7 +52,7 @@ func main() {
 
 		err := ctx.ShouldBindJSON(&data)
 		if err != nil {
-			ctx.JSON(200, gin.H{
+			ctx.JSON(400, gin.H{
 				"msg":  "添加失败",
 				"data": gin.H{},
 				"code": 400,
