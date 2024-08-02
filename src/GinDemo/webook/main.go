@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+
 	server := gin.Default()
 	u := web.NewUserHandle()
 	u.RegisterRoutes(server)
