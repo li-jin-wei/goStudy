@@ -21,7 +21,7 @@ var DB *gorm.DB
 
 // InitDB 初始化数据库
 func (user *User) InitDB() {
-	dsn := "root:Ljinw1997@@tcp(iljw.top:65501)/gin_Demo?charset=utf8&parseTime=True&loc"
+	dsn := "root:123456@tcp(123:3306)/gin_Demo?charset=utf8&parseTime=True&loc"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
