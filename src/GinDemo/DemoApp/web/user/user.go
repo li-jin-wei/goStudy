@@ -20,8 +20,8 @@ type User struct {
 var DB *gorm.DB
 
 // InitDB 初始化数据库
-func (user *User) InitDB() {
-	dsn := "root:123456@tcp(123:3306)/gin_Demo?charset=utf8&parseTime=True&loc"
+func (u *User) InitDB() {
+	dsn := "root:Ljinw1997@@tcp(iljw.top:65501)/gin_Demo?charset=utf8&parseTime=True&loc"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
@@ -37,13 +37,13 @@ func (user *User) InitDB() {
 }
 
 // InitRouter 初始化路由
-func (user *User) InitRouter(r *gin.Engine) {
-	r.POST("/add/user", user.InsertUser)
-	r.GET("/get/lists", user.GetUserList)
+func (u *User) InitRouter(r *gin.Engine) {
+	r.POST("/add/user", u.InsertUser)
+	r.GET("/get/lists", u.GetUserList)
 }
 
 // InsertUser 新增用户
-func (u User) InsertUser(c *gin.Context) {
+func (u *ser) InsertUser(c *gin.Context) {
 	var user []User
 	err := c.Bind(&user)
 	if err != nil {
@@ -56,7 +56,7 @@ func (u User) InsertUser(c *gin.Context) {
 		DB.Create(&user)
 		c.JSON(200, gin.H{
 			"msg":  "添加成功",
-			"data": data,
+			"data": user,
 			"code": 200,
 		})
 	}
@@ -64,7 +64,8 @@ func (u User) InsertUser(c *gin.Context) {
 }
 
 // GetUserList 获取用户列表
-func (u User) GetUserList(c *gin.Context) {
+func (u *User) GetUserList(c *gin.Context) {
+	var user []User
 	pageSize, _ := strconv.Atoi(c.Query("pageSize"))
 	pageNum, _ := strconv.Atoi(c.Query("pageNum"))
 
@@ -100,7 +101,7 @@ func (u User) GetUserList(c *gin.Context) {
 			"msg":  "查询成功",
 			"code": 200,
 			"data": gin.H{
-				"list":     users,
+				"list":     user,
 				"total":    total,
 				"pageNum":  pageNum,
 				"pageSize": pageSize,

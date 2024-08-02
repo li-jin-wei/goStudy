@@ -69,7 +69,6 @@ func main() {
 	r.DELETE("/user/delete/:id", func(ctx *gin.Context) {
 		var data []List
 		id := ctx.Param("id")
-
 		//Find(&data) 执行查询并填充结果到提供的切片中
 		db.Where("id =?", id).Find(&data)
 		if len(data) == 0 {
