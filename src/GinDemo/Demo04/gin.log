@@ -1,8 +1,8 @@
-[GIN-debug] POST   /path/post                --> main.main.func2 (3 handlers)
-[GIN-debug] POST   /testUpload               --> main.main.func3 (3 handlers)
-[GIN-debug] POST   /testUploadFiles          --> main.main.func4 (3 handlers)
-[GIN-debug] DELETE /path/:id                 --> main.main.func5 (3 handlers)
-[GIN-debug] PUT    /path/put                 --> main.main.func6 (3 handlers)
+[GIN-debug] POST   /path/post                --> main.main.func1 (3 handlers)
+[GIN-debug] POST   /testUpload               --> main.main.func2 (3 handlers)
+[GIN-debug] POST   /testUploadFiles          --> main.main.func3 (3 handlers)
+[GIN-debug] DELETE /path/:id                 --> main.main.func4 (3 handlers)
+[GIN-debug] PUT    /path/put                 --> main.main.func5 (3 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8081

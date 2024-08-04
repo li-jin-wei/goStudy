@@ -39,21 +39,21 @@ func Test() gin.HandlerFunc {
 
 func main() {
 	r := gin.Default()
-	v1 := r.Group("/v1").Use(Test())
-	v1.GET("path/:id", func(c *gin.Context) {
-		{
-			id := c.Param("id")
-			//DefaultQuery() 如果没有没有传值，则会返回设定的默认值
-			user := c.DefaultQuery("user", "李华")
-			pwd := c.Query("pwd")
-			c.JSON(200, gin.H{
-				"id":   id,
-				"user": user,
-				"pwd":  pwd,
-			})
-			fmt.Println("测试中间")
-		}
-	})
+	//v1 := r.Group("/v1").Use(Test())
+	//v1.GET("path/:id", func(c *gin.Context) {
+	//	{
+	//		id := c.Param("id")
+	//		//DefaultQuery() 如果没有没有传值，则会返回设定的默认值
+	//		user := c.DefaultQuery("user", "李华")
+	//		pwd := c.Query("pwd")
+	//		c.JSON(200, gin.H{
+	//			"id":   id,
+	//			"user": user,
+	//			"pwd":  pwd,
+	//		})
+	//		fmt.Println("测试中间")
+	//	}
+	//})
 
 	// // 禁用控制台颜色，将日志写入文件时不需要控制台颜色。
 	//gin.DisableConsoleColor()
@@ -93,7 +93,7 @@ func main() {
 	//单文件上传
 	r.POST("/testUpload", func(c *gin.Context) {
 		//设置上传文件大小
-		r.MaxMultipartMemory = 8 << 20 // 8 GB
+		r.MaxMultipartMemory = 8 << 20
 
 		//form-data 获取值
 		fileName := c.PostForm("fileName")
@@ -118,12 +118,15 @@ func main() {
 
 		//r.MaxMultipartMemory = 8 << 20
 
+		//获取所有文件
 		form, _ := c.MultipartForm()
+		//遍历所有文件
 		files := form.File["files"]
 
 		for _, file := range files {
 			log.Println(file.Filename)
 			c.SaveUploadedFile(file, "./"+file.Filename)
+
 			c.Writer.Header().Add("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, file.Filename))
 			c.File("./" + file.Filename)
 		}
